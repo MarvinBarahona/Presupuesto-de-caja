@@ -44,10 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormIngreso.cs">
+    <Compile Include="Clases\Entrada.cs" />
+    <Compile Include="Clases\Financiamiento.cs" />
+    <Compile Include="Clases\OtroFlujo.cs" />
+    <Compile Include="Clases\Produccion.cs" />
+    <Compile Include="Clases\TipoFinanciamiento.cs" />
+    <Compile Include="Clases\Mes.cs" />
+    <Compile Include="Forms\FormIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormIngreso.Designer.cs">
+    <Compile Include="Forms\FormIngreso.Designer.cs">
       <DependentUpon>FormIngreso.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -74,6 +80,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

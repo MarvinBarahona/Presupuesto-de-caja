@@ -1,0 +1,7 @@
+/Proyecto\ ANF/bin/*
+/Proyecto\ ANF/obj/*
+/packages/*
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
