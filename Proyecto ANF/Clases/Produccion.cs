@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Proyecto_ANF.Clases
 {
-    class Produccion
+    public class Produccion
     {
-        public float manoObra;
-        public float materiaPrima;
-        public float costoIndirecto;
+        public decimal manoObra;
+        public decimal materiaPrima;
+        public decimal costoIndirecto;
 
         public Produccion()
         {

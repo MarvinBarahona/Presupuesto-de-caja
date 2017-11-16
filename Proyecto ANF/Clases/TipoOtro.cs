@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Proyecto_ANF.Clases
 {
-    public enum TipoFinanciamiento
+    public enum TipoOtro
     {
-        Mensual = 1, 
-        Bimenstral = 2, 
-        Trimestral = 4, 
-        Semestral = 6,
-        Otro = 12
+        Pago, 
+        Cobro
     }
 }

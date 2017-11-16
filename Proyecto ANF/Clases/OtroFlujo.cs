@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Proyecto_ANF.Clases
 {
-    class OtroFlujo
+    public class OtroFlujo
     {
-        private bool _entrada;
-        public bool entrada
+        private TipoOtro _tipo;
+        public TipoOtro tipo
         {
-            get { return _entrada; }
-            set { _entrada = value; }
+            get { return _tipo; }
+            set { _tipo = value; }
         }
 
         private Mes _mes;
@@ -22,8 +22,8 @@ namespace Proyecto_ANF.Clases
             set { _mes = value; }
         }
 
-        private float _monto;
-        public float monto
+        private decimal _monto;
+        public decimal monto
         {
             get { return _monto; }
             set { _monto = value; }
@@ -31,9 +31,9 @@ namespace Proyecto_ANF.Clases
 
         private OtroFlujo() { }
 
-        public OtroFlujo(bool entrada, Mes mes, float monto)
+        public OtroFlujo(TipoOtro tipo, Mes mes, decimal monto)
         {
-            this._entrada = entrada;
+            this._tipo = tipo;
             this._mes = mes;
             this._monto = monto;
         }

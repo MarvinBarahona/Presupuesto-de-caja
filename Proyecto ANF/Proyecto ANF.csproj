@@ -32,6 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,14 +55,45 @@
     <Compile Include="Clases\Produccion.cs" />
     <Compile Include="Clases\TipoFinanciamiento.cs" />
     <Compile Include="Clases\Mes.cs" />
+    <Compile Include="Clases\TipoOtro.cs" />
+    <Compile Include="Forms\FormAgregarFinanciamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAgregarFinanciamiento.Designer.cs">
+      <DependentUpon>FormAgregarFinanciamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAgregarOtro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAgregarOtro.Designer.cs">
+      <DependentUpon>FormAgregarOtro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormIngreso.Designer.cs">
       <DependentUpon>FormIngreso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormResultado.Designer.cs">
+      <DependentUpon>FormResultado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormAgregarFinanciamiento.resx">
+      <DependentUpon>FormAgregarFinanciamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAgregarOtro.resx">
+      <DependentUpon>FormAgregarOtro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIngreso.resx">
+      <DependentUpon>FormIngreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormResultado.resx">
+      <DependentUpon>FormResultado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -67,6 +103,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

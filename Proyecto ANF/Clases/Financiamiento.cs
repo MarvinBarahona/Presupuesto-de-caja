@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_ANF.Clases
 {
-    class Financiamiento
+    public class Financiamiento
     {
         Mes _inicio;
         public Mes inicio
@@ -22,8 +22,8 @@ namespace Proyecto_ANF.Clases
             set { _plazo = value; }
         }
 
-        float _tasa;
-        public float tasa
+        decimal _tasa;
+        public decimal tasa
         {
             get { return _tasa; }
             set { _tasa = value; }
@@ -36,8 +36,8 @@ namespace Proyecto_ANF.Clases
             set { _tipo = value; }
         }
 
-        float _monto;
-        public float Monto
+        decimal _monto;
+        public decimal monto
         {
             get { return _monto; }
             set { _monto = value; }
@@ -45,7 +45,7 @@ namespace Proyecto_ANF.Clases
 
         Financiamiento() { }
 
-        public Financiamiento(Mes inicio, int plazo, float tasa, TipoFinanciamiento tipo, float monto)
+        public Financiamiento(Mes inicio, int plazo, decimal tasa, TipoFinanciamiento tipo, decimal monto)
         {
             this._inicio = inicio;
             this._monto = monto;

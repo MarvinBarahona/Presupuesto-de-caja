@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace Proyecto_ANF.Clases
 {
-    class Entrada
+    public class Entrada
     {
-        public float saldoInicial;
-        public float saldoMinimo;
-        public float precioVenta;
-        public List<int> politicaCobros;
-        public List<int> politicaPagos; 
+        public decimal saldoInicial;
+        public decimal saldoMinimo;
+        public decimal precioVenta;
+        public int[] politicaCobros;
+        public int[] politicaPagos; 
         public int[] proyeccion;
-        public float otroPago;
-        public float otroCobro;
+        public decimal otroPago;
+        public decimal otroCobro;
         public Produccion produccion;
-        public List<OtroFlujo> otrosFlujos;
-        public List<Financiamiento> financiamientos; 
+        public OtroFlujo[] otrosCobros;
+        public OtroFlujo[] otrosPagos;
+        public Financiamiento[] financiamientos; 
 
         public Entrada()
         {
@@ -34,27 +35,13 @@ namespace Proyecto_ANF.Clases
             this.produccion = new Produccion();
 
             //Validar suma menor o igual a 100. 
-            this.politicaCobros = new List<int>();
-            this.politicaCobros.Add(100); 
-
-            this.politicaPagos = new List<int>();
-            this.politicaPagos.Add(100);
+            this.politicaCobros = new int[5];
+            this.politicaPagos = new int[5];
             
             // Solo agregar a la lista. 
-            this.otrosFlujos = new List<OtroFlujo>();
-            this.financiamientos = new List<Financiamiento>();
-            
-        }
-
-        public bool agregarPoliticaCobro(int porcentaje)
-        {
-            bool r = false;
-            if (this.politicaCobros.Sum() + porcentaje <= 100)
-            {
-                this.politicaCobros.Add(porcentaje); 
-            }
-
-            return r; 
+            this.otrosCobros = new OtroFlujo[5];
+            this.otrosPagos = new OtroFlujo[5];
+            this.financiamientos = new Financiamiento[5];            
         }
 
         public bool validarPoliticaCobro()
@@ -62,30 +49,9 @@ namespace Proyecto_ANF.Clases
             return this.politicaCobros.Sum() == 100;
         }
 
-        public bool agregarPoliticaPago(int porcentaje)
-        {
-            bool r = false;
-            if (this.politicaPagos.Sum() + porcentaje <= 100)
-            {
-                this.politicaPagos.Add(porcentaje);
-            }
-
-            return r;
-        }
-
         public bool validarPoliticaPago()
         {
             return this.politicaPagos.Sum() == 100;
-        }
-
-        public void agregarFlujo(bool entrada, Mes mes, float monto)
-        {
-            this.otrosFlujos.Add(new OtroFlujo(entrada, mes, monto));
-        }
-
-        public void agregarFinanciamiento(Mes inicio, int plazo, float tasa, TipoFinanciamiento tipo, float monto)
-        {
-            this.financiamientos.Add(new Financiamiento(inicio, plazo, tasa, tipo, monto));
         }
     }
 }

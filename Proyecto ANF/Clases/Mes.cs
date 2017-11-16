@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_ANF.Clases
 {
-    enum Mes
+    public enum Mes
     {
         Enero,
         Febrero, 
