@@ -42,6 +42,8 @@
             this.octubre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noviembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diciembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,11 +180,26 @@
             this.diciembre.ReadOnly = true;
             this.diciembre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(883, 410);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(118, 23);
+            this.btnExportar.TabIndex = 1;
+            this.btnExportar.Text = "Exportar imagen";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Portable netwrok Graphics  | *.png";
+            // 
             // FormResultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 445);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.dgvResultado);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -214,5 +231,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn octubre;
         private System.Windows.Forms.DataGridViewTextBoxColumn noviembre;
         private System.Windows.Forms.DataGridViewTextBoxColumn diciembre;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

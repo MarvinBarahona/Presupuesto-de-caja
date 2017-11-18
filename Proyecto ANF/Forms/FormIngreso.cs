@@ -244,11 +244,13 @@ namespace Proyecto_ANF
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            this.asignarDatos();
-            using (FormResultado formResultado = new FormResultado(this.entrada))
+            if (this.asignarDatos())
             {
-                formResultado.ShowDialog();
-            }  
+                using (FormResultado formResultado = new FormResultado(this.entrada))
+                {
+                    formResultado.ShowDialog();
+                }  
+            }            
         }        
     }
 }

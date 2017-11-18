@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -149,6 +150,18 @@ namespace Proyecto_ANF.Forms
 
             dgvResultado.Rows.Add(financiar.toRow(dgvResultado.DefaultCellStyle.Font, Color.Red, false, true));
             dgvResultado.Rows.Add(excedente.toRow(dgvResultado.DefaultCellStyle.Font, Color.Blue, false, true));
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bitmap = new Bitmap(dgvResultado.Width, dgvResultado.Height);
+                dgvResultado.DrawToBitmap(bitmap, new Rectangle(0, 0, dgvResultado.Width, dgvResultado.Height));
+                bitmap.Save(saveFileDialog1.FileName);
+                
+                MessageBox.Show("Archivo guardado", "Éxito en la operación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
