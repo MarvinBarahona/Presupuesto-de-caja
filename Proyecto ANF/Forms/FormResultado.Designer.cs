@@ -184,7 +184,7 @@
             // 
             this.btnExportar.Location = new System.Drawing.Point(883, 410);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(118, 23);
+            this.btnExportar.Size = new System.Drawing.Size(118, 25);
             this.btnExportar.TabIndex = 1;
             this.btnExportar.Text = "Exportar imagen";
             this.btnExportar.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "Portable netwrok Graphics  | *.png";
+            this.saveFileDialog1.Filter = "Portable Network Graphics  | *.png";
             // 
             // FormResultado
             // 
