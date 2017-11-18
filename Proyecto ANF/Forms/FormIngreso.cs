@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Proyecto_ANF.Clases;
 using Proyecto_ANF.Forms;
 using System;
@@ -245,7 +244,7 @@ namespace Proyecto_ANF
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            //double r = Financial.Pmt(0.02, 6, -4000);
+            this.asignarDatos();
             using (FormResultado formResultado = new FormResultado(this.entrada))
             {
                 formResultado.ShowDialog();

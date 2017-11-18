@@ -1,4 +1,5 @@
-﻿using Proyecto_ANF.Clases;
+﻿using Microsoft.VisualBasic;
+using Proyecto_ANF.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,8 +82,25 @@ namespace Proyecto_ANF.Forms
 
             foreach (Financiamiento financiamiento in this.entrada.financiamientos)
             {
-                if (financiamiento != null) financiamientoEntrada.agregarDato(financiamiento.inicio, financiamiento.monto);
+                if (financiamiento != null)
+                {
+                    financiamientoEntrada.agregarDato(financiamiento.inicio, financiamiento.monto);
+
+                    decimal tasa = financiamiento.tasa / 100 * ((decimal)((int)financiamiento.tipo) / 12);
+                    double n = (double)financiamiento.plazo / (int)financiamiento.tipo;
+                    
+                    double interes = Financial.Pmt((double)tasa, n, (double)(-financiamiento.monto));
+
+                    int i = 1;
+                    int j = (int)financiamiento.inicio + (int)financiamiento.tipo * i++;
+                    while (j < 12)
+                    {
+                        financiamientoSalida.agregarDato(j, (decimal)interes);
+                        j = (int)financiamiento.inicio + (int)financiamiento.tipo * i++;
+                    }
+                }
             }
+
 
             Flujo[] entradas = new Flujo[]{ventasEfectivo, recaudacionCC, financiamientoEntrada, otrosEntrada};
             Flujo flujoE = Flujo.sumar("Entrada de efectivo", entradas);
@@ -90,22 +108,47 @@ namespace Proyecto_ANF.Forms
             Flujo[] salidas = new Flujo[]{gastosFabricacion, pagoCP, financiamientoSalida, otrosSalida};
             Flujo flujoS = Flujo.sumar("Salida de efectivo", salidas);
 
-            //Flujo excedente = Flujo.restar("Efectivo excedente", flujoE, flujoS);
-            //Flujo financiamiento = Flujo.quitarNegativos(excedente);
+            Flujo flujoNeto = Flujo.restar("Flujo de efectivo neto", flujoE, flujoS);
 
-            dgvResultado.Rows.Add(flujoE.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black, false));
+            Flujo montoInicial = new Flujo("Saldo inicial", 0);
+            Flujo montoFinal = new Flujo("Saldo final", 0);
+
+            montoInicial.agregarDato(0, this.entrada.saldoInicial);
+            montoFinal.agregarDato(0, montoInicial.obtenerDato(0) + flujoNeto.obtenerDato(0));
+
+            for (int i = 1; i < 12; i++)
+            {
+                montoInicial.agregarDato(i, montoFinal.obtenerDato(i - 1));
+                montoFinal.agregarDato(i, montoInicial.obtenerDato(i) + flujoNeto.obtenerDato(i));
+            }
+
+            Flujo saldoMin = new Flujo("Saldo mínimo", this.entrada.saldoMinimo);
+
+            Flujo excedente = Flujo.restar("Efectivo excedente", montoFinal, saldoMin);
+            Flujo financiar = Flujo.quitarNegativos(excedente);
+
+            dgvResultado.Rows.Add(flujoE.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black, false, true));
             foreach (Flujo flujo in entradas)
             {
-                dgvResultado.Rows.Add(flujo.toRow(dgvResultado.DefaultCellStyle.Font, Color.Gray));
+                dgvResultado.Rows.Add(flujo.toRow(dgvResultado.DefaultCellStyle.Font, Color.Gray, true));
             }
             
-            dgvResultado.Rows.Add(flujoS.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black, false));
+            dgvResultado.Rows.Add(flujoS.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black, false, true));
             foreach (Flujo flujo in salidas)
             {
-                dgvResultado.Rows.Add(flujo.toRow(dgvResultado.DefaultCellStyle.Font, Color.Gray));
+                dgvResultado.Rows.Add(flujo.toRow(dgvResultado.DefaultCellStyle.Font, Color.Gray, true));
             }
-            //dgvResultado.Rows.Add(financiamiento.toRow(dgvResultado.DefaultCellStyle.Font, Color.Red, false, true));
-            //dgvResultado.Rows.Add(excedente.toRow(dgvResultado.DefaultCellStyle.Font, Color.Blue, false, true));
+
+            dgvResultado.Rows.Add(flujoNeto.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black, false, true));
+
+            dgvResultado.Rows.Add(montoInicial.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black));
+
+            dgvResultado.Rows.Add(montoFinal.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black, false, true));
+
+            dgvResultado.Rows.Add(saldoMin.toRow(dgvResultado.DefaultCellStyle.Font, Color.Black));
+
+            dgvResultado.Rows.Add(financiar.toRow(dgvResultado.DefaultCellStyle.Font, Color.Red, false, true));
+            dgvResultado.Rows.Add(excedente.toRow(dgvResultado.DefaultCellStyle.Font, Color.Blue, false, true));
         }
     }
 }

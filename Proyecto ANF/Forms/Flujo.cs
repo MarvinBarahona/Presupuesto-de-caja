@@ -25,6 +25,11 @@ namespace Proyecto_ANF.Forms
             }
         }
 
+        public decimal obtenerDato(int index)
+        {
+            return this.datos[index];
+        }
+
         public void agregarDato(Mes mes, decimal monto)
         {
             int i = (int)mes;
@@ -36,7 +41,7 @@ namespace Proyecto_ANF.Forms
             this.datos[i] += monto;
         }
 
-        public DataGridViewRow toRow(Font fuenteBase, Color color, bool cursiva = true, bool negrita = false)
+        public DataGridViewRow toRow(Font fuenteBase, Color color, bool cursiva = false, bool negrita = false)
         {
             DataGridViewRow row = new DataGridViewRow();
             
@@ -45,15 +50,14 @@ namespace Proyecto_ANF.Forms
 
             row.DefaultCellStyle.ForeColor = color;
 
-
-            DataGridViewCell cellTitulo = new DataGridViewTextBoxCell();
+             DataGridViewCell cellTitulo = new DataGridViewTextBoxCell();
             cellTitulo.Value = this.titulo;
             row.Cells.Add(cellTitulo);
 
             for (int i = 0; i < 12; i++)
             {
                 DataGridViewCell cellDato = new DataGridViewTextBoxCell();
-                if (this.datos[i] != 0) cellDato.Value = this.datos[i];
+                if (this.datos[i] != 0) cellDato.Value = string.Format("{0:C}", this.datos[i]);
                 else cellDato.Value = null;
                 row.Cells.Add(cellDato);
             }

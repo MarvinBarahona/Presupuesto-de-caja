@@ -66,17 +66,17 @@
             this.octubre,
             this.noviembre,
             this.diciembre});
-            this.dgvResultado.Location = new System.Drawing.Point(27, 54);
+            this.dgvResultado.Location = new System.Drawing.Point(31, 12);
             this.dgvResultado.Name = "dgvResultado";
             this.dgvResultado.ReadOnly = true;
             this.dgvResultado.RowHeadersVisible = false;
-            this.dgvResultado.Size = new System.Drawing.Size(850, 304);
+            this.dgvResultado.Size = new System.Drawing.Size(999, 381);
             this.dgvResultado.TabIndex = 0;
             // 
             // flujo
             // 
             this.flujo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.flujo.FillWeight = 400F;
+            this.flujo.FillWeight = 300F;
             this.flujo.HeaderText = "Flujo";
             this.flujo.Name = "flujo";
             this.flujo.ReadOnly = true;
@@ -182,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 419);
+            this.ClientSize = new System.Drawing.Size(1058, 445);
             this.Controls.Add(this.dgvResultado);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);

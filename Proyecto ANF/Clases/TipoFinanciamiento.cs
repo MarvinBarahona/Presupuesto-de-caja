@@ -10,7 +10,7 @@ namespace Proyecto_ANF.Clases
     {
         Mensual = 1, 
         Bimenstral = 2, 
-        Trimestral = 4, 
+        Trimestral = 3, 
         Semestral = 6,
         Otro = 12
     }
